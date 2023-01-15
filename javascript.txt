@@ -86,3 +86,188 @@ const fruit = prompt("사과 몇번?")
  function 함수명(매개변수,매개변수){
     //코드
  }
+
+ 함수명() // 함수 호츨
+ 유지보수가 쉽다.
+
+ function sayHello(name){
+    const mag = `hello ${name}`;
+    console.log(msg);
+ }
+
+ sayHello('홍길동');
+
+ // hello 홍길동
+
+
+
+ let msg = "welcome"; //전역변수
+
+ function sayHello(name){
+    let msg = hello; //지역변수
+    console.log(msg + ' ' + name) 
+ }
+sayHello(홍길동) // hello 홍길동 출력
+console.log(msg) // welcome 출력
+
+function sayHello(name){
+    let newName = name || "임시 이름"
+    let msg = `hello ${name} `
+    console.log(msg);
+}
+sayHello() // hello 임시 이름
+sayHello(홍길동) // hello 홍길동
+
+- 한번에 한작업에 집중
+- 읽기 쉽고 어떤 동작인지 알 수 있게 네이밍 하기
+
+function sayHello(){ 
+// 함수 선언문 :어디서든 호출 가능
+}
+sayHello()
+
+let sayHello = function(){ 
+// 함수 표현식
+}
+sayHello()
+
+화살표 햠수 표현하기
+let add = function(num1, num2){ // 함수 선언문
+    return num1 + num2;
+}
+
+let add = (num1, num2) => { //화살표 함수
+    return num1 + num2
+}
+
+let add = (num1, num2) => (num1 + num2;) 
+let sayHello = (name) => (`hello ${name}`;)
+
+객체
+const superman = {
+    name:'홍길동',
+    age:'20',
+}
+
+객체에 접근
+superman.name
+superman['age']
+
+객체 추가
+superman.gender = 'boy';
+superman['hairColor']='red';
+
+삭제
+delete superman.hairColor;
+
+Object - 단축 프로퍼티
+const name = '홍길동';
+const age = 33;
+
+const superman = {
+    name, // name= name
+    age, // age = age
+    gender : 'boy'
+}
+
+superman.birthDay; // undefined
+존재하지 않는 프로퍼티를 실행을 시키면 undefined 가 뜬다.
+
+'birthDay' in superman;
+//false
+
+'age' in superman;
+//true
+
+for ...in 반복문
+for(let key in  superman){
+    console.log(key)
+    console.log(superman[key])
+}
+
+const makeObject = (name, age)=>{
+    retrun{
+        name: name,
+        age : age,
+        hobby : "football"
+    };
+}
+
+const Mike = makeObject("Mike", 20);
+console.log(Mike);
+
+method : 객체 프로퍼티로 할당 된 함수
+superman.fly(); // fly가 메소드
+const superman={
+    name:'홍길동',
+    age: 20,
+    fly(){
+        console.log('날아갑니다')
+    }
+}
+
+let boy = {
+    name:'홍길동',
+    sayHello,
+}
+
+let girl = {
+    name:'홍순동",
+    sayHello,
+}
+
+sayHello : function(){
+    console.log(`hellom i'm ${this.name}`);
+}
+화살표 함수는 일반 함수와는 달리 자신만의 this를 가지지 않음 화살표
+화살표 함수 내부에서 this를 사용하면, 그 this는 외부에서 값을 가져온다.
+객체에 메소드를 작성 할 때는 화살표 함수를 사용하지 말자.
+
+this는 해당 객체를 가리킨다.
+
+Array 배열
+
+let students = ['철수', '훈이', ... '짱구'];
+고유번호를 index라고 한다. index는 0 부터 시작
+
+배열은 문자 뿐만 아니라, 숫자, 객체, 함수 등도 포함할 수 있다.
+let arr =[
+    '민수',
+    3,
+    false,
+    {
+        name : '짱구'
+        age : 30,
+    },
+    function(){
+        console.log('짱구 가족');
+    }
+] // 이런식으로 여러가지를 배열에 넣을 수 있다.
+
+length : 배열의 길이
+students.length
+
+push(): 배열 끝에 추가
+let days = ['월','화','수']
+days.psuh('목')
+console.log(days) // ['월','화','수','목']
+
+pop(): 배열 끝 요소 제거
+let days=['월','화','수'];
+days.pop()
+console.log(days) // ['월','화']
+
+unshift() : 배열 앞에 추가
+let days = ['월','화','수']
+days.unshift('일')
+console.log(days) // ['일','월','화','수']
+
+shift() : 배열 앞에 제거
+let days = ['일','월','화','수']
+days.shift()
+console.log(days) // ['월','화','수']
+
+let days = ['월','화','수'];
+for(let index = 0; index < days.length; index++){
+    console.log(days[index])
+}
