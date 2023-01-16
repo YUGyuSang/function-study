@@ -271,3 +271,129 @@ let days = ['월','화','수'];
 for(let index = 0; index < days.length; index++){
     console.log(days[index])
 }
+
+호이스팅 
+- 스코프 내부 어디서든 변수 선언은 최상위에 선언된 것 처럼 행동
+
+변수의 생성과정
+1. 선언 단계
+2. 초기화 단계
+3. 할당 단계
+
+var 함수 스코프
+let, const 블록 스코프
+
+if(age>19){
+    var txt = '성인';
+}
+console.log(txt); // '성인' var는 이런식으로 사용가능 하지만 const, let는 같이 있어야 가능 하지만 var도 함수 내에서 선언하면 사용 할 수 없음
+
+객체 리터럴
+생성자 함수
+사용하는 이유 비슷한 여러 객체를 만들기 위해 사용
+붕어빵 틀이라고 생각하자
+function User(name, age){ // 생성자 함수명을 정할 때는 첫글자는 대문자로 하자
+    this.name = name;
+    this.age = age;
+}
+let user1 = new User('홍길동', 30); // new 연산자를 사용해서 호출
+let user2 = new User('짱구', 5);
+
+Object.assign(): 객체 복제
+const newUser = Object.assign({}, user) 
+이런식으로 하면 같은 객체가 아님
+
+Object.keys(): 키 배열 반환
+const user ={
+    name : '홍길동',
+    age : 30,
+    gender : 'male'
+}
+Object.keys(user) // ["name","age","gender"] 로 출력
+
+Object.vlaues(): 값 배열 반환
+ const user ={
+    name : '홍길동',
+    age : 30,
+    gender : 'male'
+}
+Object.vlaues(user) // ["홍길동",30,"male"]로 값만 가져옴
+
+Object.entries(): 키/값 배열 반환 
+
+Object.fromEntries(): 키/값 배열을 객체로 만들어준다.
+const arr = [
+    ["name","홍길동"],
+    ["age",30],
+    ["gender","male"]
+];
+Object.fromEntries(arr) // {
+    name : '홍길동',
+    age : 30,
+    gender : 'male'
+}로 출력
+
+심볼(Symbol):유일성 보장 
+const a = Symbol(); // new를 붙이지 않습니다!
+
+Symbol.for(): 전역 심볼
+하나의 심볼만 보장받을 수 있음
+없으면 만들고, 있으면 가져오기 때문
+Symbol 함수는 매번 다른 Symbol 값을 생성하지만,
+Symbol.for 메소드는 하나를 생성한 뒤 키를 통해 같은 Symbol을 공유
+
+toString() 
+10진수를 2진수 16진수를 바꾸어준다.
+
+Math.ceil()
+올림
+Math.floor()
+내림
+Math.round()
+반올림
+toFixed() // 문자를 변환 Number로 바꾸어 표현
+소수점 자릿수
+parseInt()
+문자열을 숫자로 바꾸어준다. 
+parseFloat()
+부등 소수점을 반환한다.
+Math.abs()
+절대 값
+Math.pow(n,m)
+제곱
+
+`이거는 여러줄로 표현 할 수 있어 편한다.
+'',"" 이것은 error가 난다. 
+
+toUpperCase(): 모든 영어 문자를 대문자로 바꾸어줌.
+toLowerCase(): 모든 영어 문자를 소문자로 바꾸어줌.
+
+slice(n,m) n시작점, m은 끝점
+trim() : 앞 뒤 공백 제거
+
+indexOf를 사용 할 때 주의 점 조건을 줄 때 >-1을 꼭 넣어주자
+
+Array 메소드
+
+splice(n,m) : 특정 요소 지움
+splice(n,m,x) : 특정 요소 지우고 추가
+
+forEach(fn): 배열 반복
+let users = ['mike','tom','jane'];
+users.forEach((name, index) =>{
+    console.log(`${index + 1}, ${name}`);
+});
+
+includes(): 포함하는지 확인 있으면 ture 없으면 false
+
+find(fn)/findIndex(fn) : 첫 번째 ture 값만 반환하고 끝 없으면 undefined를 반환
+let arr = [1,2,3,4,5]
+const result = arr.find((item)=>{
+    retrun item % 2 === 0;
+})
+console.log(result) // 2 짝수만 찾아준다.
+
+filter(fn) : 만족하는 모든 요소를 배열로 반환
+reverse() : 역순으로 재정렬
+
+map() : 실무에서 엄청 쓰임 함수를 받아 특정 기능을 시행하고 새로운 배열을 반환
