@@ -1,0 +1,62 @@
+async, await 
+비동기이다. 
+핵심이기도 하다. 
+프로미스를 간단하게 표현 할 수 있다.
+
+1. async
+
+function fetchUser(){
+    //10초 정도 걸리는 코드  //이런식으로 작성하면 자바스크립트는 순차적으로 돌아가기 때문에 10초있다가 페이지가 뜬다.
+    return 'ellie';
+}
+
+function fetchUser(){
+    retrun new Promise((resovle, reject)=>{ //Promise를 사용하면 비동기적으로 순행을 해준다. 그럼 promise가 바로 팬딩 된 상태가 된다.
+        //10초 정도 걸리는 코드
+        resolve('ellie');
+    })
+}
+
+async function fetchUser(){ // async를 사용하면 간편하게 비동기 코드로 만들 수 있다. 저 위에 Promise처럼 resolve를 써줄 필요가 없다. 쉽게 생각하면 async를 사용하면 
+    //10초 정도 걸리는 코드     // Promise로 바뀐다고 생각하면 된다.
+    return 'ellie';
+}
+
+const user = fetchUser();
+user.then(console.log);
+console.log(user);
+
+2. await
+
+function delay(ms) {
+    return new Promise(resovle => serTimeout(resovle, ms));
+}
+
+async function getApple(){
+    await delay(3000);
+    retrun '사과';
+}
+
+async function getBanana(){
+    await delay(3000);
+    retrun '바나나';
+}
+
+async function pickFruits() { // 이런식으로 async와 await를 사용하면 간편하게 나타낼 수 있다.
+    const applePromise = getApple(); // 병렬적으로 실행시키기 위해 프로미스를 받는다.
+    const bananaPromise = getBanana();
+    const apple = await applePromise();
+    const banana = await bananaPromise();
+    retrun `&{apple} + ${banana}`;
+}
+
+pickFruits().then(console.log);
+
+3. useful Promise APIs
+function pcikAllFruits() {
+    retrun promise.all([getApple(),getBanana()])
+    .then(fruit => fruit.join('+'));
+}
+pcikAllFruits().then(console.log)
+
+function
